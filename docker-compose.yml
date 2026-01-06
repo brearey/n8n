@@ -20,6 +20,7 @@ services:
       
       - N8N_SECURE_COOKIE=true
       - EXTERNAL_FRONTEND_HOOKS_URLS=https://lorriant.ru/n8n/
+      - N8N_PUSH_BACKEND=sse
       
     volumes:
       - n8n_data:/home/node/.n8n
