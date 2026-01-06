@@ -4,17 +4,23 @@ services:
     container_name: n8n
     restart: unless-stopped
     ports:
-      - "5678:5678"
+      - "127.0.0.1:5678:5678"
     environment:
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
       - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
+      
       - N8N_HOST=lorriant.ru
-      - N8N_PORT=5678
       - N8N_PROTOCOL=https
-      - N8N_EDITOR_BASE_URL=https://lorriant:5678
-      - WEBHOOK_URL=https://lorriant.ru:5678
+      - N8N_EDITOR_BASE_URL=https://lorriant.ru/n8n/
+      - WEBHOOK_URL=https://lorriant.ru/n8n/
+      
       - GENERIC_TIMEZONE=Asia/Yakutsk
+      - N8N_PATH=/n8n/
+      
+      - N8N_SECURE_COOKIE=true
+      - EXTERNAL_FRONTEND_HOOKS_URLS=https://lorriant.ru/n8n/
+      
     volumes:
       - n8n_data:/home/node/.n8n
       - ./local-files:/files
